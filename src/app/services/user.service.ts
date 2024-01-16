@@ -10,7 +10,7 @@ export class UserService {
   baseUrl = 'http://localhost:3000/posts';
 
   constructor(private http: HttpClient) { }
-
+  
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl);
   }
@@ -21,5 +21,9 @@ export class UserService {
 
   deleteUsers(id: string): Observable<any> {
     return this.http.delete(this.baseUrl + '/' + id);
+  }
+
+  getUserById(userId: string): Observable<User> {
+    return this.http.get<User>(`${this.baseUrl}/users/${userId}`);
   }
 }

@@ -1,4 +1,4 @@
-<div class="background-container">
+<div class="background-container-register">
 <div id='navbar'>
     <ul>
         <li><a href="#">DEMO APP</a></li>
@@ -11,30 +11,30 @@
 
     </ul>
 
-    <div class="container" style="width: 50%;">
-        <h1 class="profile mt-5 ">Profile</h1>
-        <div class="row">
-           <div class="col-sm-6">
-             <div class="card">
-               <div class="card-body">
-                 <h5 class="card-title">Card title</h5>
-                 <p class="card-text" style="width: 50%;">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                 <button href="#" class="btn btn-primary">Edit Photo</button>
-                 <button class="btn btn-primary ml-4">Edit Profile</button>
-
-               </div>
-             </div>
-           </div>
-           <div class="col-sm-6">
-             <div class="card">
-               <div class="card-body">
-                 <h5 class="card-title">Card title</h5>
-                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                 <a href="#" class="btn btn-primary">Go somewhere</a>
-               </div>
-             </div>
-           </div>
+    <div class="container-fluid g-0 p-2" *ngFor="let user of users" style="margin-left: 10%; margin-top: 5%;">
+<div class="row">
+        <div class="col-md-4">
+            <div class="col-md-2 d-flex justify-content-center align-items-center" style="margin-left: 10%; margin-top: 5%;">
+                <img src="../../assets/images/{{user.photo}}" class="profile">
+            </div>
+        
+            <div class="col-md-2 d-flex justify-content-center align-items-center" style="margin-left: 10%; margin-top: 10px; padding: 5px;">
+                <div class="btn-group" role="group">
+                    <button class="btn btn-warning" style="margin-right: 15px;">Edit Photo</button>
+                    <button class="btn btn-warning">Edit Profile</button>
+                </div>
+            </div>
         </div>
-       </div>
-</div>
-</div>
+          <div class="col-md-2 d-flex justify-content-center align-items-center">
+                <div class="btn-group" role="group">
+                    <p>I'm {{user.firstname}} and I'm above {{user.age}} and you can send your emails to {{user.email}}.
+                        I live in the {{user.state}} of {{user.country}}. I like to play {{user.tags}}. And please send me newsletters. Please reach out to me on {{user.phonenumber}}
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+        
+    </div>

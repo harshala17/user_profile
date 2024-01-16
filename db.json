@@ -2,34 +2,17 @@
   "posts": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    },
-    {
-      "firstname": "HARSHALA",
-      "lastname": "ATHANI",
-      "email": "harshalaathani15@gmail.com",
-      "phonenumber": "+918779177006",
-      "age": "",
+      "firstname": "Harshala",
+      "lastname": "Athani",
+      "email": "harshalaathani@gmail.com",
+      "phonenumber": "8779177006",
+      "age": 40,
       "state": "1",
-      "address": "Mumbai",
+      "address": "Old viva college road.",
       "tags": "Cricket",
       "photo": "Aviary Stock Photo 1.png",
       "country": "",
-      "id": 2
-    },
-    {
-      "firstname": "HARSHALA",
-      "lastname": "ATHANI",
-      "email": "harshalaathani15@gmail.com",
-      "phonenumber": "+918779177006",
-      "age": "",
-      "state": "1",
-      "address": "Mumbai",
-      "tags": "Cricket",
-      "photo": "home1.png",
-      "country": "",
-      "id": 3
+      "newsletter": ""
     }
   ],
   "comments": [

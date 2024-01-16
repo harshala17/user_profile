@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from '../user.mode';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -7,26 +8,19 @@ import { User } from '../user.mode';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  // @Input() user: User;
-
-  constructor() {
-    // this.user = {
-    //   photo: '',
-    //   firstname: '',
-    //   lastname: '',
-    //   email: '',
-    //   phonenumber: 0,
-    //   age: 0,
-    //   state: '',
-    //   country: '',
-    //   address: '',
-    //   tags: '',
-    //   newsletter: ''
-    // }
+  users:User[]=[];
+ 
+  constructor(private userService:UserService) {
+    
   }
   ngOnInit(): void {
-    
-    // console.log(this.user);
+    this.userService.getUsers().subscribe((data)=>{
+      this.users= data;
+    },
+    (error)=>{
+      console.log('Some error occured');
+      
+    })
     
   }
 

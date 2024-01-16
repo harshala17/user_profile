@@ -1,7 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../user.mode';
 import { UserService } from '../services/user.service';
+import { RouteReuseStrategy, Router } from '@angular/router';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+
 
 @Component({
   selector: 'app-home',
@@ -10,44 +13,55 @@ import { UserService } from '../services/user.service';
 })
 export class HomeComponent implements OnInit {
   @ViewChild('fileInput') fileInput: any;
-  users!: User[];
+  @Output() usersUpdated = new EventEmitter<User[]>();
+  sizeRestriction = { width: 310, height: 325 };
+  users: User[];
   countryOptions = ['India', 'USA', 'UK'];
   stateOptions = ['Maharashtra', 'Bangalore', 'Chennai'];
-  usersToDisplay!: User[];
+  usersToDisplay: User[];
   imgSrc: string = './assets/placeholder.png';
   postForm!: FormGroup;
+  selectedFile: File | undefined;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(private fb: FormBuilder, private userService: UserService,private route:Router) {
     this.users = [];
     this.usersToDisplay = this.users;
   }
 
   ngOnInit(): void {
     this.postForm = this.fb.group({
-      imageUpload: this.fb.control(''),
+      id:this.fb.control(''),
+      // imageUpload: this.fb.control(''),
       firstname: this.fb.control(''),
       lastname: this.fb.control(''),
       email: this.fb.control(''),
-      phoneno: this.fb.control(''),
-      age: this.fb.control(''),
+      phoneno: this.fb.control('default'),
+      age: this.fb.control('default'),
       state: this.fb.control(''),
       country: this.fb.control(''),
       address: this.fb.control(''),
-      tags: this.fb.control('')
+      tags: this.fb.control(''),
+      newsletter:this.fb.control('')
     });
 
     this.userService.getUsers().subscribe((res: User[]) => {
-      console.log(res);
+        for(let usr of res){
+          this.users.unshift(usr);
+          // this.route.navigateByUrl("register");
+        }
+        this.usersToDisplay = this.users;
     });
   }
-
+ 
   clearForm(): void {
     this.postForm.reset();
+    // this.postForm.setControl('imageUpload', this.fb.control('', [this.imageDimensionsValidator(310, 325)]));
     this.fileInput.nativeElement.value = '';
   }
 
   onSubmit() {
     let user: User = {
+      id:this.postForm.get('id')?.value,
       firstname: this.postForm.get('firstname')?.value,
       lastname: this.postForm.get('lastname')?.value,
       email: this.postForm.get('email')?.value,
@@ -64,8 +78,9 @@ export class HomeComponent implements OnInit {
     this.userService.postUsers(user).subscribe((res) => {
       this.users.unshift(res);
       this.clearForm();
-    });
-  }
+      this.route.navigateByUrl('/register')
+    })
+    }
 
   get fc() {
     return this.postForm.controls;
@@ -108,4 +123,23 @@ export class HomeComponent implements OnInit {
     return this.postForm.get('newsletter') as FormControl;
   }
 
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (e: any) => {
+      const img = new Image();
+      img.src = e.target.result;
+
+      img.onload = () => {
+        if (img.width === this.sizeRestriction.width && img.height === this.sizeRestriction.height) {
+          this.imgSrc = img.src;
+        } else {
+          alert('Image dimensions must be 310x325 px.');
+        }
+      };
+    };
+
+    reader.readAsDataURL(file);
+ }
 }

@@ -50,10 +50,11 @@
                                         <div class="container">
                                             <div class="picture-container">
                                                 <div class="form-group">
-                                                    <img [src]="imgSrc" class="imgPreview" alt="">
-                                                    <input type="file" class="form-control" accept="image/*" formControlName="imageUpload" #fileInput name="photo">
-
-                                                    <label for="">Upload your photo</label>
+                                                    <img [src]="imgSrc" class="imgPreview" alt=""  *ngIf="imgSrc">
+                                                    <input type="file" class="form-control" accept="image/*" 
+                                                    #fileInput id="photo" name="photo" (change)="onFileSelected($event)" >
+                                                    
+                                                    <label for="photo">Upload your photo</label>
                                                 
                                                 </div>
                                             </div>
@@ -142,11 +143,11 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </form>
+
                         </div>
+
                         <div class="modal-footer">
                             <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button class="btn btn-primary" data-bs-dismiss="modal" routerLink="register" (click)="onSubmit()">Submit</button>
@@ -164,7 +165,7 @@
 
         <!-- Modal -->
 
-
+ 
 
 
     </div>
