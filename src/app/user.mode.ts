@@ -1,4 +1,5 @@
 export class User {
+    id?:number=0;
     photo:string= '';
 firstname:string='';
 lastname:string='';

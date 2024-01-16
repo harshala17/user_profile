@@ -7,26 +7,26 @@ import { User } from '../user.mode';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  @Input() user: User;
+  // @Input() user: User;
 
   constructor() {
-    this.user = {
-      photo: '',
-      firstname: '',
-      lastname: '',
-      email: '',
-      phonenumber: 0,
-      age: 0,
-      state: '',
-      country: '',
-      address: '',
-      tags: '',
-      newsletter: ''
-    }
+    // this.user = {
+    //   photo: '',
+    //   firstname: '',
+    //   lastname: '',
+    //   email: '',
+    //   phonenumber: 0,
+    //   age: 0,
+    //   state: '',
+    //   country: '',
+    //   address: '',
+    //   tags: '',
+    //   newsletter: ''
+    // }
   }
   ngOnInit(): void {
     
-    console.log(this.user);
+    // console.log(this.user);
     
   }
 

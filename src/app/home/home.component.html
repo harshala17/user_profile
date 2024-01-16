@@ -51,7 +51,8 @@
                                             <div class="picture-container">
                                                 <div class="form-group">
                                                     <img [src]="imgSrc" class="imgPreview" alt="">
-                                                    <input type="file" class="form-control" accept="image/*" formControlName="imageUplaod" name="photo">
+                                                    <input type="file" class="form-control" accept="image/*" formControlName="imageUpload" #fileInput name="photo">
+
                                                     <label for="">Upload your photo</label>
                                                 
                                                 </div>
@@ -99,9 +100,8 @@
                                             <div class="col">
                                                 <select class="form-select" aria-label="select example" name="state" formControlName="state">
                                                     <option selected>State</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
+                                                    <option value="1" *ngFor="let state of stateOptions">{{state}}</option>
+                                                    
                                                   </select>
 
                                                   
@@ -111,9 +111,8 @@
                                             <div class="col">
                                                 <select class="form-select" aria-label="select example" name="country" formControlName="country">
                                                     <option selected>Country</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
+                                                    <option value="" *ngFor="let country of countryOptions;">{{country}}</option>
+                                                   
                                                   </select>
 
                                                   
@@ -150,7 +149,7 @@
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-primary" data-bs-dismiss="modal" routerLink="register" (click)="onSubmit()">Submit</button>
+                            <button class="btn btn-primary" data-bs-dismiss="modal" (click)="onSubmit()">Submit</button>
                         </div>
                     </div>
                 </div>
