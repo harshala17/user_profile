@@ -1,0 +1,176 @@
+<div class="background-container">
+    <div id='navbar'>
+        <ul>
+            <li><a href="#">DEMO APP</a></li>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">ABOUT US</a></li>
+            <li><a href="#">JOBS</a></li>
+            <li><a href="#">CLIENTS</a></li>
+            <li><a href="#">EMPLOYERS</a></li>
+            <li><a href="#">CONTACT US</a></li>
+
+        </ul>
+        <div class="search-form">
+            <label class="job-description">I'm looking for..</label>
+            <div class="search-input">
+                <input type="text" id="job-description" name="job-description" placeholder="Enter a Job Description">
+                <button type="search" class="search" style="padding: 15px; margin-top: -10px;">Search</button>
+            </div>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="checkbox1" name="checkbox1">
+                <label for="checkbox1">Full Time</label>
+                <input type="checkbox" id="checkbox2" name="checkbox2">
+                <label for="checkbox2">Part Time / Casual / Freelance</label>
+                <div class="location-selection">
+                    <select id="location" name="location">
+                        <option value="" disabled selected>Select your location</option>
+                        <option value="New York">New York</option>
+                        <option value="Los Angeles">Los Angeles</option>
+                        <option value="Chicago">Chicago</option>
+                    </select>
+                </div>
+            </div>
+            <button type="button" class="button" data-bs-target="#exampleModal" data-bs-toggle="modal"
+                type="submit">Register</button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg " role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form [formGroup]="postForm" >
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="container">
+                                            <div class="picture-container">
+                                                <div class="form-group">
+                                                    <img [src]="imgSrc" class="imgPreview" alt="">
+                                                    <input type="file" class="form-control" accept="image/*" formControlName="imageUplaod" name="photo">
+                                                    <label for="">Upload your photo</label>
+                                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row mb-2">
+                                            <div class="col">
+                                                <input type="text" class="form-control" name="firstname" placeholder="First Name" formControlName="firstname">
+                                                <div *ngIf="fc['firstname'].errors?.['maxlength']">
+                                                <div class="alert-danger" *ngIf="fc['firstname'].touched && fc['firstname'].invalid">Only
+                                                    alphabetic characters are allowed and the length should not exceed
+                                                    20 characters</div>
+                                            </div>
+                                            </div>
+                                            <div class="col">
+                                                <input type="text" class="form-control" name="lastname" placeholder="Last Name" formControlName="lastname">
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col">
+                                                <input type="text" class="form-control" name="email" placeholder="Email" formControlName="email">
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col">
+
+                                                <input type="text" class="form-control" name="phonenumber" placeholder="(541)754-3010" formControlName="phoneno">
+                                            </div>
+
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label for="age-slider">Age:</label>
+                                                        <input type="range" id="age" name="age" min="18" name="age" max="99"
+                                                            class="input-range" value="18" formControlName="age">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Add more form fields as needed -->
+                                        </div>
+
+                                        <div class="row mt-2">
+                                            <div class="col">
+                                                <select class="form-select" aria-label="select example" name="state" formControlName="state">
+                                                    <option selected>State</option>
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                  </select>
+
+                                                  
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col">
+                                                <select class="form-select" aria-label="select example" name="country" formControlName="country">
+                                                    <option selected>Country</option>
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                  </select>
+
+                                                  
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-2">
+                                            <div class="col">
+                                                <input type="text" class="form-control" name="address" placeholder="Address" formControlName="address">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-2">
+                                            <div class="col">
+                                                <input type="text" class="form-control" name="tags" placeholder="Tags" formControlName="tags">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-2">
+                                            <div class="col">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name="newsletter">
+                                                    <label class="form-check-label" for="flexCheckChecked">
+                                                      subscribe to newsletter
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" data-bs-dismiss="modal" routerLink="register" (click)="onSubmit()">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Launch demo modal
+            </button> -->
+
+
+        <!-- Modal -->
+
+
+
+
+    </div>
+
+</div>
+
+
+<!-- Button trigger modal -->

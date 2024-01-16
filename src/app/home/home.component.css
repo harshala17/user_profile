@@ -1,0 +1,125 @@
+.imgPreview{
+    border-radius: 70%;
+width: 50%;
+}
+
+.job-description{
+    font-style: italic;
+}
+/* Search */
+.search-form {
+    margin-top: 10%;
+    margin-left: 5%;
+    color: #333; /* Set text color to be visible on the background */
+    font-family: 'Lato', sans-serif;
+
+}
+
+select{
+    color: #333; /* Set text color to be visible on the background */
+    font-family: 'Lato', sans-serif;
+}
+
+.search-form .job-description{
+    font-size: 50px;
+    color: rgb(248, 248, 248);
+}
+
+.search-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+.search-form .search{
+    margin-left: 10px;
+}
+.alert-danger{
+    background: transparent;
+}
+.search-form #job-description{
+    margin-bottom: 10px;
+    position: relative;
+    display: block;
+    width: 80%;
+    padding: 10px;
+    height: 50px;
+    border: #f3f3f3;
+    /* border-radius: 10px; */
+    outline: none;
+    box-shadow: 0 16px 16px -5px rgba(0,0,0,.4);
+    background: transparent;
+    /* background-color: white; */
+}
+
+.search-form ::placeholder{
+    color: #8b8686;
+    font-style: italic;
+    font-size: medium;
+
+}
+.search-form .search-input {
+    display: flex;
+    align-items: center;
+    
+    
+}
+
+.checkbox-container {
+    display: flex;
+  }
+.search-form .search-input button{
+    width: 10%; /* Adjust the width as needed */
+    padding: 20px 10px;
+    font-style: italic;
+    
+}
+input[type="checkbox"] {
+    margin-right: 10px;
+  }
+ 
+  .button {
+    margin-top: 10px;
+    text-align: center;
+  }
+.input-range{
+    width:150%;
+}
+  label {
+    margin-top: 15px;
+    margin-right: 15px;
+  }
+
+.search-form button {
+    height: 20%;
+    background-color: #5dd1e0;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+.location-selection {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align to the right */
+    margin-left: 27%;
+    
+}
+
+.location-selection label {
+    margin-right: 10px; /* Add margin between label and select */
+}
+
+.location-selection select {
+    padding: 8px;
+    border: #f3f3f3;
+    outline: none;
+    color: #201e1e;
+    box-shadow: 0 16px 16px -5px rgba(0,0,0,.4);
+    background: transparent;
+    font-family: 'Lato', sans-serif;
+    font-style: italic;
+
+
+}
