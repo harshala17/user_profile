@@ -4,6 +4,32 @@
       "id": 1,
       "title": "json-server",
       "author": "typicode"
+    },
+    {
+      "firstname": "HARSHALA",
+      "lastname": "ATHANI",
+      "email": "harshalaathani15@gmail.com",
+      "phonenumber": "+918779177006",
+      "age": "",
+      "state": "1",
+      "address": "Mumbai",
+      "tags": "Cricket",
+      "photo": "Aviary Stock Photo 1.png",
+      "country": "",
+      "id": 2
+    },
+    {
+      "firstname": "HARSHALA",
+      "lastname": "ATHANI",
+      "email": "harshalaathani15@gmail.com",
+      "phonenumber": "+918779177006",
+      "age": "",
+      "state": "1",
+      "address": "Mumbai",
+      "tags": "Cricket",
+      "photo": "home1.png",
+      "country": "",
+      "id": 3
     }
   ],
   "comments": [
