@@ -1,9 +1,11 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../user.mode';
 import { UserService } from '../services/user.service';
 import { RouteReuseStrategy, Router } from '@angular/router';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { UserEditComponent } from '../user-edit/user-edit.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -142,4 +144,7 @@ export class HomeComponent implements OnInit {
 
     reader.readAsDataURL(file);
  }
+ 
+
+
 }

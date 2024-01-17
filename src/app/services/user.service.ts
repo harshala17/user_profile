@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { User } from '../user.mode';
 
 @Injectable({
@@ -23,7 +23,11 @@ export class UserService {
     return this.http.delete(this.baseUrl + '/' + id);
   }
 
-  getUserById(userId: string): Observable<User> {
-    return this.http.get<User>(`${this.baseUrl}/users/${userId}`);
+  private openRegisterModalSubject = new Subject<void>();
+
+  openRegisterModal$ = this.openRegisterModalSubject.asObservable();
+
+  triggerOpenRegisterModal() {
+    this.openRegisterModalSubject.next();
   }
 }

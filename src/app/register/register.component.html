@@ -1,40 +1,48 @@
 <div class="background-container-register">
-<div id='navbar'>
-    <ul>
-        <li><a href="#">DEMO APP</a></li>
-        <li><a href="#">HOME</a></li>
-        <li><a href="#">ABOUT US</a></li>
-        <li><a href="#">JOBS</a></li>
-        <li><a href="#">CLIENTS</a></li>
-        <li><a href="#">EMPLOYERS</a></li>
-        <li><a href="#">CONTACT US</a></li>
+    <div id='navbar'>
+        <ul>
+            <li><a href="#">DEMO APP</a></li>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">ABOUT US</a></li>
+            <li><a href="#">JOBS</a></li>
+            <li><a href="#">CLIENTS</a></li>
+            <li><a href="#">EMPLOYERS</a></li>
+            <li><a href="#">CONTACT US</a></li>
 
-    </ul>
-
-    <div class="container-fluid g-0 p-2" *ngFor="let user of users" style="margin-left: 10%; margin-top: 5%;">
-<div class="row">
-        <div class="col-md-4">
-            <div class="col-md-2 d-flex justify-content-center align-items-center" style="margin-left: 10%; margin-top: 5%;">
-                <img src="../../assets/images/{{user.photo}}" class="profile">
-            </div>
+        </ul>
         
-            <div class="col-md-2 d-flex justify-content-center align-items-center" style="margin-left: 10%; margin-top: 10px; padding: 5px;">
-                <div class="btn-group" role="group">
-                    <button class="btn btn-warning" style="margin-right: 15px;">Edit Photo</button>
-                    <button class="btn btn-warning">Edit Profile</button>
+        <div class="container-fluid g-0 p-2" *ngFor="let user of users" style="margin-left: 10%; margin-top: 5%;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="col-md-2 d-flex justify-content-center align-items-center"
+                        style="margin-left: 10%; margin-top: 5%;">
+                        <img [src]="user" alt="{{ user.firstname }}'s photo" class="profile">
+                    </div>
+
+                    <div class="col-md-2 d-flex justify-content-center align-items-center"
+                        style="margin-left: 10%; margin-top: 10px; padding: 5px;">
+                        <div class="btn-group" role="group">
+                            <button class="btn btn-warning" style="margin-right: 15px;">Edit Photo</button>
+
+                            <button class="btn btn-warning">Edit Profile</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 d-flex justify-content-center align-items-center">
+                    <div class="btn-group" role="group">
+                        <p>I'm {{user.firstname}} and I'm above {{user.age}} and you can send your emails to
+                            {{user.email}}.
+                            I live in the {{user.state}} of {{user.country}}. I like to play {{user.tags}}. And please
+                            send me newsletters. Please reach out to me on {{user.phonenumber}}
+                        </p>
+
+                    </div>
                 </div>
             </div>
         </div>
-          <div class="col-md-2 d-flex justify-content-center align-items-center">
-                <div class="btn-group" role="group">
-                    <p>I'm {{user.firstname}} and I'm above {{user.age}} and you can send your emails to {{user.email}}.
-                        I live in the {{user.state}} of {{user.country}}. I like to play {{user.tags}}. And please send me newsletters. Please reach out to me on {{user.phonenumber}}
-                    </p>
-                    
-                </div>
-            </div>
-        </div>
-        </div>
     </div>
-        
-    </div>
+
+    
+
+</div>
+
