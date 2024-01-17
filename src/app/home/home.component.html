@@ -44,7 +44,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form [formGroup]="postForm" #exampleModal >
+                            <form [formGroup]="postForm" #register (ngSubmit)="onSubmit()" >
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="container">
@@ -63,85 +63,95 @@
                                     <div class="col-md-6">
                                         <div class="row mb-2">
                                             <div class="col">
-                                                <input type="text" class="form-control" name="firstname" placeholder="First Name" formControlName="firstname">
-                                                <div *ngIf="fc['firstname'].errors?.['maxlength']">
-                                                <div class="alert-danger" *ngIf="fc['firstname'].touched && fc['firstname'].invalid">Only
-                                                    alphabetic characters are allowed and the length should not exceed
-                                                    20 characters</div>
-                                            </div>
+                                              <input type="text" class="form-control" name="firstname" placeholder="First Name" formControlName="firstname">
+                                              <div class="alert-danger" *ngIf="fc['firstname'].touched && fc['firstname'].hasError('required')">First Name is required</div>
+                                              <div class="alert-danger" *ngIf="fc['firstname'].touched && fc['firstname'].hasError('maxlength')">Only alphabetic characters are allowed, and the length should not exceed 20 characters</div>
                                             </div>
                                             <div class="col">
-                                                <input type="text" class="form-control" name="lastname" placeholder="Last Name" formControlName="lastname">
+                                              <input type="text" class="form-control" name="lastname" placeholder="Last Name" formControlName="lastname">
+                                              <div class="alert-danger" *ngIf="fc['lastname'].touched && fc['lastname'].hasError('required')">Last Name is required</div>
+                                              <div class="alert-danger" *ngIf="fc['lastname'].touched && fc['lastname'].hasError('maxlength')">Only alphabetic characters are allowed, and the length should not exceed 20 characters</div>
                                             </div>
-                                        </div>
-                                        <div class="row mt-2">
+                                          </div>
+                                          
+                                          <!-- Add similar error messages for other form controls -->
+                                          
+                                          
+                                          <div class="row mt-2">
                                             <div class="col">
-                                                <input type="text" class="form-control" name="email" placeholder="Email" formControlName="email">
+                                              <input type="text" class="form-control" name="email" placeholder="Email" formControlName="email">
+                                              <div class="alert-danger" *ngIf="fc['email'].touched && fc['email'].hasError('required')">Email is required</div>
+                                              <div class="alert-danger" *ngIf="fc['email'].touched && fc['email'].hasError('email')">Invalid email format</div>
                                             </div>
-                                        </div>
-                                        <div class="row mt-2">
+                                          </div>
+                                          
+                                          <div class="row mt-2">
                                             <div class="col">
-
-                                                <input type="text" class="form-control" name="phonenumber" placeholder="(541)754-3010" formControlName="phoneno">
+                                              <input type="text" class="form-control" name="phonenumber" placeholder="(541)754-3010" formControlName="phoneno">
+                                              <div class="alert-danger" *ngIf="fc['phoneno'].touched && fc['phoneno'].hasError('required')">Phone Number is required</div>
+                                              <div class="alert-danger" *ngIf="fc['phoneno'].touched && fc['phoneno'].hasError('minlength')">Phone Number should have a minimum length of 11 characters</div>
                                             </div>
-
+                                          
                                             <div class="container">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <label for="age-slider">Age:</label>
-                                                        <input type="range" id="age" name="age" min="18" name="age" max="99"
-                                                            class="input-range" value="18" formControlName="age">
-                                                    </div>
+                                              <div class="row">
+                                                <div class="col-md-6">
+                                                  <label for="age-slider">Age:</label>
+                                                  <input type="range" id="age" name="age" min="18" name="age" max="99" class="input-range" value="18" formControlName="age">
+                                                  <div class="alert-danger" *ngIf="fc['age'].touched && fc['age'].hasError('required')">Age is required</div>
+                                                  <div class="alert-danger" *ngIf="fc['age'].touched && fc['age'].hasError('min')">Age should be at least 18</div>
+                                                  <div class="alert-danger" *ngIf="fc['age'].touched && fc['age'].hasError('max')">Age should not exceed 99</div>
                                                 </div>
+                                              </div>
                                             </div>
                                             <!-- Add more form fields as needed -->
-                                        </div>
-
-                                        <div class="row mt-2">
+                                          </div>
+                                          
+                                          <div class="row mt-2">
                                             <div class="col">
-                                                <select class="form-select" aria-label="select example" name="state" formControlName="state">
-                                                    <option selected>State</option>
-                                                    <option value="1" *ngFor="let state of stateOptions">{{state}}</option>
-                                                    
-                                                  </select>
-
-                                                  
+                                              <select class="form-select" aria-label="select example" name="state" formControlName="state">
+                                                <option value="" disabled selected>Select your state</option>
+                                                <option value="1" *ngFor="let state of stateOptions">{{state}}</option>
+                                              </select>
+                                              <div class="alert-danger" *ngIf="fc['state'].touched && fc['state'].hasError('required')">State is required</div>
                                             </div>
-                                        </div>
-                                        <div class="row mt-2">
+                                          </div>
+                                          
+                                          <div class="row mt-2">
                                             <div class="col">
-                                                <select class="form-select" aria-label="select example" name="country" formControlName="country">
-                                                    <option selected>Country</option>
-                                                    <option value="" *ngFor="let country of countryOptions">{{country}}</option>
-                                                   
-                                                  </select>
-
-                                                  
+                                              <select class="form-select" aria-label="select example" name="country" formControlName="country">
+                                                <option value="" disabled selected>Select your country</option>
+                                                <option value="1" *ngFor="let country of countryOptions">{{country}}</option>
+                                              </select>
+                                              <div class="alert-danger" *ngIf="fc['country'].touched && fc['country'].hasError('required')">Country is required</div>
                                             </div>
-                                        </div>
-
-                                        <div class="row mt-2">
+                                          </div>
+                                          
+                                          <div class="row mt-2">
                                             <div class="col">
-                                                <input type="text" class="form-control" name="address" placeholder="Address" formControlName="address">
+                                              <input type="text" class="form-control" name="address" placeholder="Address" formControlName="address">
+                                              <div class="alert-danger" *ngIf="fc['address'].touched && fc['address'].hasError('required')">Address is required</div>
                                             </div>
-                                        </div>
-
-                                        <div class="row mt-2">
+                                          </div>
+                                          
+                                          <div class="row mt-2">
                                             <div class="col">
-                                                <input type="text" class="form-control" name="tags" placeholder="Tags" formControlName="tags">
+                                              <input type="text" class="form-control" name="tags" placeholder="Tags" formControlName="tags">
+                                              <div class="alert-danger" *ngIf="fc['tags'].touched && fc['tags'].hasError('required')">Tags are required</div>
                                             </div>
-                                        </div>
-
-                                        <div class="row mt-2">
+                                          </div>
+                                          
+                                          <div class="row mt-2">
                                             <div class="col">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name="newsletter">
-                                                    <label class="form-check-label" for="flexCheckChecked">
-                                                      subscribe to newsletter
-                                                    </label>
-                                                </div>
+                                              <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name="newsletter" formControlName="newsletter">
+                                                <label class="form-check-label" for="flexCheckChecked">
+                                                  Subscribe to newsletter
+                                                </label>
+                                                <div class="alert-danger" *ngIf="fc['newsletter'].touched && fc['newsletter'].hasError('required')">Newsletter subscription is required</div>
+                                              </div>
                                             </div>
-                                        </div>
+                                          </div>
+                                          
                                     </div>
                                 </div>
                             </form>
@@ -150,7 +160,7 @@
 
                         <div class="modal-footer">
                             <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-primary" data-bs-dismiss="modal" routerLink="register" (click)="onSubmit()">Submit</button>
+                            <button class="btn btn-primary" data-bs-dismiss="modal" routerLink="register" [disabled]="!postForm.valid" >Submit</button>
                         </div>
                     </div>
                 </div>

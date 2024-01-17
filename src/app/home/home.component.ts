@@ -4,7 +4,6 @@ import { User } from '../user.mode';
 import { UserService } from '../services/user.service';
 import { RouteReuseStrategy, Router } from '@angular/router';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { UserEditComponent } from '../user-edit/user-edit.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -24,6 +23,7 @@ export class HomeComponent implements OnInit {
   imgSrc: string = './assets/placeholder.png';
   postForm!: FormGroup;
   selectedFile: File | undefined;
+// register: any;
 
   constructor(private fb: FormBuilder, private userService: UserService,private route:Router) {
     this.users = [];
@@ -32,18 +32,18 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.postForm = this.fb.group({
-      id:this.fb.control(''),
+      id: this.fb.control(''),
       // imageUpload: this.fb.control(''),
-      firstname: this.fb.control(''),
-      lastname: this.fb.control(''),
-      email: this.fb.control(''),
-      phoneno: this.fb.control('default'),
-      age: this.fb.control('default'),
-      state: this.fb.control(''),
-      country: this.fb.control(''),
-      address: this.fb.control(''),
-      tags: this.fb.control(''),
-      newsletter:this.fb.control('')
+      firstname: ['', [Validators.required, Validators.maxLength(20)]],
+      lastname: ['', [Validators.required, Validators.maxLength(20)]],
+      email: ['', [Validators.required, Validators.email]], // Assuming email validation
+      phoneno: ['', [Validators.required, Validators.minLength(11)]], // Assuming a minimum length of 11 for phone numbers
+      age: ['', [Validators.required, Validators.min(18), Validators.max(99)]], // Assuming age between 18 and 99
+      state: ['', [Validators.required]],
+      country: ['', [Validators.required]],
+      address: ['', [Validators.required]],
+      tags: ['', [Validators.required]],
+      newsletter: ['', [Validators.required]]
     });
 
     this.userService.getUsers().subscribe((res: User[]) => {
@@ -54,6 +54,11 @@ export class HomeComponent implements OnInit {
         this.usersToDisplay = this.users;
     });
   }
+
+//   isFormEmpty(): boolean {
+//   const formValues = this.postForm.value;
+//   return Object.values(formValues).some(value => value === '' || value === null);
+// }
  
   clearForm(): void {
     this.postForm.reset();
